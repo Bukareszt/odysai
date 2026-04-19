@@ -1056,7 +1056,11 @@ footer .rights { opacity: .6; }
 
         <div>
           <div class="contact-title" style="color:var(--accent); margin-bottom: 8px;">&#10095; ./apply.sh --interactive</div>
-          <form class="signup-form" id="signup-form" novalidate>
+          <form class="signup-form" id="signup-form" action="https://formsubmit.co/grzegorz.piotrowski@pwr.edu.pl" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New OdysAI Application">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
               <div class="form-field">
                 <label for="f-name">name<span class="req">*</span></label>
@@ -1252,26 +1256,28 @@ form.addEventListener('submit', (e) => {
   setStatus('// submitting...', '');
   formSubmit.disabled = true;
 
-  // save locally — form is ready for a backend hook later
-  try {
-    const payload = {
-      name, email,
-      year: form.year.value,
-      github: form.github.value.trim(),
-      learn,
-      ts: new Date().toISOString(),
-    };
-    const existing = JSON.parse(localStorage.getItem('odysai.applications') || '[]');
-    existing.push(payload);
-    localStorage.setItem('odysai.applications', JSON.stringify(existing));
-  } catch(_) {}
+  const formData = new FormData(form);
 
-  setTimeout(() => {
-    document.getElementById('succ-name').textContent = name;
-    document.getElementById('succ-email').textContent = email;
-    form.style.display = 'none';
-    formSuccess.style.display = 'block';
-  }, 700);
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' },
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('succ-name').textContent = name;
+      document.getElementById('succ-email').textContent = email;
+      form.style.display = 'none';
+      formSuccess.style.display = 'block';
+    } else {
+      setStatus('// error: submission failed, try again', 'err');
+      formSubmit.disabled = false;
+    }
+  })
+  .catch(() => {
+    setStatus('// error: network issue, try again', 'err');
+    formSubmit.disabled = false;
+  });
 });
 
 // live status hint
