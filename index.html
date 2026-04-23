@@ -1061,11 +1061,11 @@ footer .rights { opacity: .6; }
           <div class="talk-avatar" style="background:rgba(124,185,138,.12); border-color:var(--green); color:var(--green);">GP</div>
           <div class="talk-speaker">Grzegorz Piotrowski</div>
         </div>
-        <div class="talk-title" style="color: var(--green);">Introduction to OdysAI</div>
+        <div class="talk-title" style="color: var(--green);">Introduction to OdysAI + Research Topics</div>
         <div class="talk-abstract">
           What is OdysAI, what are our goals, what research directions are we pursuing,
           and how is the group organized &mdash; from meetings and activities to collaboration
-          and what we offer to students.
+          and what we offer to students. Followed by a presentation of the group's research topics.
         </div>
         <div class="talk-topics">
           <span class="talk-topic" style="color:var(--green); border-color:rgba(124,185,138,.25); background:rgba(124,185,138,.08);">our mission &amp; goals</span>
@@ -1130,14 +1130,29 @@ footer .rights { opacity: .6; }
       </div>
 
       <!-- Talk 4: Mateusz -->
-      <div class="talk-card tba">
+      <div class="talk-card">
         <div class="talk-header">
           <div class="talk-avatar">MB</div>
           <div class="talk-speaker">Mateusz Bystronski</div>
         </div>
-        <div class="talk-title">Creativity &mdash; TBA</div>
+        <div class="talk-title">Divergent Thinking &amp; Creativity in LLMs</div>
+        <div class="talk-abstract">
+          Research documents that LLMs, despite stochastic decoding, systematically narrow
+          their response space &mdash; the conditional output distribution is low-variance in practice,
+          leading to mode collapse and convergence of different models to surprisingly similar solutions.
+          For agents solving tasks with multiple valid paths, this means repeatedly trying variants of
+          the same strategy instead of exploring qualitatively different approaches. Agentic divergent
+          thinking &mdash; the ability to generate structurally different solution hypotheses &mdash;
+          is therefore a critical research direction. One promising approach is searching a continuous
+          latent &ldquo;intention&rdquo; space that conditions agent generation without modifying model
+          weights; it has already been shown that this allows a weaker open model to match frontier ones.
+        </div>
         <div class="talk-topics">
-          <span class="talk-topic">// details coming soon</span>
+          <span class="talk-topic">latent intention space search</span>
+          <span class="talk-topic">evolutionary &amp; CMA-ES strategies</span>
+          <span class="talk-topic">world model rollouts</span>
+          <span class="talk-topic">computational topology &amp; persistent homology</span>
+          <span class="talk-topic">divergent RL (brainstorm then learn)</span>
         </div>
       </div>
     </div>
