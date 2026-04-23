@@ -412,6 +412,137 @@ section {
 }
 .hero-logo-caption strong { color: var(--body); font-weight: 600; }
 
+/* ===== SEMINAR ===== */
+.seminar-banner {
+  background: linear-gradient(135deg, rgba(217,119,87,.12), rgba(232,168,124,.05));
+  border: 1px solid rgba(217,119,87,.3);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  padding: 28px 32px;
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.seminar-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--bg);
+  background: var(--accent);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.seminar-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.seminar-banner-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--body);
+}
+.seminar-banner-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .04em;
+}
+.seminar-banner-meta .hl { color: var(--accent); }
+
+.talk-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 36px;
+}
+.talk-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: 28px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s, border-color .2s, background .2s;
+}
+.talk-card:hover { transform: translateY(-2px); background: var(--bg3); border-left-color: var(--accent-2); }
+.talk-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(217,119,87,.06), transparent 50%);
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.talk-card:hover::after { opacity: 1; }
+.talk-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.talk-avatar {
+  width: 48px; height: 48px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.talk-speaker {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--body);
+}
+.talk-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.talk-abstract {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.65;
+  opacity: .88;
+  margin-bottom: 16px;
+}
+.talk-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.talk-topic {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(217,119,87,.08);
+  border: 1px solid rgba(217,119,87,.2);
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: .04em;
+}
+.talk-card.tba {
+  border-left-color: var(--muted-2);
+  opacity: .7;
+}
+.talk-card.tba .talk-title { color: var(--muted); }
+.talk-card.tba .talk-topic { color: var(--muted); background: rgba(138,138,122,.08); border-color: rgba(138,138,122,.2); }
+
 /* ===== RESEARCH TOPICS ===== */
 .areas-grid {
   display: grid;
@@ -814,6 +945,7 @@ footer .rights { opacity: .6; }
   .join-inner { grid-template-columns: 1fr; gap: 40px; }
   .join-box { padding: 40px 28px; }
   #spindle-wrap { display: none; }
+  .seminar-banner { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 620px) {
   .areas-grid, .team-grid { grid-template-columns: 1fr; }
@@ -836,6 +968,7 @@ footer .rights { opacity: .6; }
     </div>
     <div class="nav-links">
       <a href="#hero" data-section="hero" class="active">home</a>
+      <a href="#seminar" data-section="seminar">seminar <span class="badge">[new]</span></a>
       <a href="#research" data-section="research">research <span class="badge">[8]</span></a>
       <a href="#team" data-section="team">team <span class="badge">[7]</span></a>
       <a href="#join" data-section="join">join</a>
@@ -902,9 +1035,85 @@ footer .rights { opacity: .6; }
     </div>
   </section>
 
+  <!-- ===== SEMINAR ===== -->
+  <section id="seminar">
+    <div class="section-label">02 &mdash; Upcoming Event</div>
+    <h2 class="section-title">First Seminar</h2>
+    <p class="section-sub">
+      Presentations of our research topics and ongoing work &mdash; open to anyone interested in applied AI.
+    </p>
+
+    <div class="seminar-banner">
+      <div class="seminar-badge">&#9679; Upcoming</div>
+      <div class="seminar-banner-info">
+        <div class="seminar-banner-title">OdysAI Research Seminar #1</div>
+        <div class="seminar-banner-meta">
+          <span class="hl">// location:</span> Katedra Sztucznej Inteligencji D-21, Sala Seminaryjna
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-cards">
+      <!-- Talk 1: Konrad -->
+      <div class="talk-card">
+        <div class="talk-header">
+          <div class="talk-avatar">KK</div>
+          <div class="talk-speaker">Konrad Kielczynski</div>
+        </div>
+        <div class="talk-title">Trustworthy LLMs</div>
+        <div class="talk-abstract">
+          Sztuczna inteligencja przestala byc ciekawostka, a stala sie fundamentem technologicznym.
+          Jednak dopoki LLM-y pozostaja nieprzewidywalnymi &bdquo;czarnymi skrzynkami&rdquo;, ich pelne
+          wykorzystanie w medycynie czy prawie jest niemozliwe. Badania koncentruja sie na budowie
+          Trustworthy LLMs &mdash; systemow, ktore nie tylko daja odpowiedzi, ale potrafia wyjasnic
+          swoj proces decyzyjny i uczciwie przyznac: &bdquo;tego nie jestem pewien&rdquo;.
+        </div>
+        <div class="talk-topics">
+          <span class="talk-topic">redukcja halucynacji</span>
+          <span class="talk-topic">interpretowalnosc mechanistyczna (SAE)</span>
+          <span class="talk-topic">estymacja niepewnosci</span>
+        </div>
+      </div>
+
+      <!-- Talk 2: Mikolaj Langner -->
+      <div class="talk-card">
+        <div class="talk-header">
+          <div class="talk-avatar">ML</div>
+          <div class="talk-speaker">Mikolaj Langner</div>
+        </div>
+        <div class="talk-title">Reasoning Models</div>
+        <div class="talk-abstract">
+          Modele reasoningowe to obecnie hot-topic, ale ostatnie badania pokazuja, ze standardowy
+          Chain-of-Thought, ktory model nam pokazuje, niewiele ma wspolnego z tym, jak model
+          &bdquo;mysli&rdquo;. Stad powstaja pytania: jak to ewaluowac, weryfikowac i czy da sie
+          zajrzec glebiej.
+        </div>
+        <div class="talk-topics">
+          <span class="talk-topic">ewaluacja reasoningu &amp; PRMs</span>
+          <span class="talk-topic">agenci reasoningowi</span>
+          <span class="talk-topic">autoformalizacja &amp; weryfikacja formalna</span>
+          <span class="talk-topic">latent reasoning</span>
+          <span class="talk-topic">reasoning multimodalny</span>
+        </div>
+      </div>
+
+      <!-- Talk 3: Mateusz -->
+      <div class="talk-card tba">
+        <div class="talk-header">
+          <div class="talk-avatar">MB</div>
+          <div class="talk-speaker">Mateusz Bystronski</div>
+        </div>
+        <div class="talk-title">Creativity &mdash; TBA</div>
+        <div class="talk-topics">
+          <span class="talk-topic">// details coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== RESEARCH TOPICS ===== -->
   <section id="research">
-    <div class="section-label">02 &mdash; Research Topics</div>
+    <div class="section-label">03 &mdash; Research Topics</div>
     <h2 class="section-title">What we work on</h2>
     <p class="section-sub">
       Eight open research topics &mdash; agentic, applied, and increasingly weird. Each is led by a member of the group;
@@ -972,7 +1181,7 @@ footer .rights { opacity: .6; }
 
   <!-- ===== TEAM ===== -->
   <section id="team">
-    <div class="section-label">03 &mdash; The Team</div>
+    <div class="section-label">04 &mdash; The Team</div>
     <h2 class="section-title">Who we are</h2>
     <p class="section-sub">
       Seven researchers and one scientific mentor. Mostly AI and CS students &mdash; all of us obsessed
@@ -1037,7 +1246,7 @@ footer .rights { opacity: .6; }
 
   <!-- ===== JOIN ===== -->
   <section class="join-section" id="join">
-    <div class="section-label">04 &mdash; Join Us</div>
+    <div class="section-label">05 &mdash; Join Us</div>
     <div class="join-box">
       <div class="join-inner">
         <div>
@@ -1197,7 +1406,7 @@ setTimeout(typeNext, 300);
 
 /* ===== NAV active state ===== */
 const navLinks = document.querySelectorAll('.nav-links a');
-const sectionIds = ['hero','research','team','join','contact'];
+const sectionIds = ['hero','seminar','research','team','join','contact'];
 function updateNavActive() {
   const y = window.scrollY + 120;
   let active = 'hero';
@@ -1214,6 +1423,7 @@ updateNavActive();
 const bubble = document.getElementById('spindle-bubble');
 const sectionMsgs = {
   hero: '<span class="prompt">&#10095;</span> welcome to OdysAI\n<span class="prompt">&#10095;</span> grab a coffee :)',
+  seminar: '<span class="prompt">&#10095;</span> first seminar!\n<span class="prompt">&#10095;</span> D-21, Sala Seminaryjna',
   research: '<span class="prompt">&#10095;</span> 8 topics, 1 collective\n<span class="prompt">&#10095;</span> pick your quest',
   team: '<span class="prompt">&#10095;</span> 7 humans, 1 mentor\n<span class="prompt">&#10095;</span> ...and me',
   join: '<span class="prompt">&#10095;</span> ready?\n<span class="prompt">&#10095;</span> apply \u2192',
